@@ -128,3 +128,15 @@ input {
     font-size: 11px
   }
 }
+
+@media only screen and (max-width: 830px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
