@@ -40,13 +40,13 @@ const RightContainerRegister = () => {
                 <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Password</div><input type='password' value={password} onChange={handleChange} /></label>
                 <div style={{ fontSize: '0.9rem', color: 'gray' }}>
                     <b>Strength:</b>
-                    <ul>Password must include:</ul>
-                    <li>8 to 14 characters</li>
-                    <li>1 uppercase letter</li>
-                    <li>1 lowercase letter</li>
-                    <li>1 number</li>
-                    <li>1 special character</li>
-                    {/* <span>[@#$%^&*?_~-()+={ }[]|;:'“<>/,.]</span> */}
+                    <ul style={{ margin: '0px', padding: '10px' }}>Password must include:
+                        <li>8 to 14 characters</li>
+                        <li>1 uppercase letter</li>
+                        <li>1 lowercase letter</li>
+                        <li>1 number</li>
+                        <li>1 special character</li>
+                        {/* <span>[@#$%^&*?_~-()+={ }[]|;:'“<>/,.]</span> */}</ul>
                 </div>
                 <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Confirm password</div><input type='password' value={confirmPassword} onChange={handleChange} /></label>
                 <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Email</div><input type='text' value={email} onChange={handleChange} /></label>
