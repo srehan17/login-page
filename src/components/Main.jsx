@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../images/logoNew.png'
 import appleLogo from '../images/apple-logo.png'
 import image1 from '../images/image1.png'
 import image2 from '../images/image2.png'
 import image3 from '../images/image3.png'
 import image4 from '../images/image4.png'
+import { useNavigate } from 'react-router-dom'
 
 const Main = () => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+
     useEffect(() => {
         let slideIndex = 0
         const showSlides = () => {
@@ -29,7 +34,18 @@ const Main = () => {
         showSlides()
     }, []) // Empty dependency array ensures this effect runs only once after mounting
 
-    const handleSubmit = () => { }
+    const handleChange = (e) => {
+        const { username, password } = e.target
+        setUsername(username)
+        setPassword(password)
+
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setUsername('')
+        setPassword('')
+        navigate("/logged-in")
+    }
 
     return (
         <div className='container'>
@@ -59,13 +75,12 @@ const Main = () => {
                 <img src={logo} style={{ width: '180px' }} />
                 <div className='border'></div>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: '60%', marginTop: '20px' }}>
-                    <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>User name or email</div><input type='text' /></label>
-                    <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Password</div><input type='text' /></label>
+                    <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>User name or email</div><input type='text' value={username} onChange={handleChange} /></label>
+                    <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Password</div><input type='password' value={password} onChange={handleChange} /></label>
                     <a style={{ fontSize: '0.8rem', marginTop: '10px', alignSelf: 'flex-end', }} href="#">Forgot Password?</a>
-                </form>
-                <button style={{ backgroundColor: "#ffa841" }}>
-                    Login
-                </button>
+                    <button style={{ backgroundColor: "#ffa841", width: '100%' }}>
+                        Login
+                    </button></form>
                 <div>or</div>
                 <button style={{ backgroundColor: '#1c9dcf' }}>Continue with Microsoft</button>
                 <button style={{ backgroundColor: "#1c9dcf" }}>Continue with LinkedIn</button>
