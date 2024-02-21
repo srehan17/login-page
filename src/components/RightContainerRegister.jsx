@@ -12,18 +12,33 @@ const RightContainerRegister = () => {
     const [username, setUsername] = useState('')
     const [userType, setUserType] = useState('')
     const [language, setLanguage] = useState('')
+    const [notification, setNotification] = useState('')
 
     const navigate = useNavigate()
 
-
     const handleChange = (e) => {
-        const { firstname, lastname, password } = e.target
+        const { firstname, lastname, password, email, userType, language, username, confirmPassword } = e.target
+        setFirstname(firstname)
+        setLastname(lastname)
         setUsername(username)
         setPassword(password)
-
+        setConfirmPassword(confirmPassword)
+        setUserType(userType)
+        setLanguage(language)
+        setEmail(email)
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (password && password.length < 8) {
+            console.log(password)
+            setNotification('The password must be at least 8 characters.')
+            return
+        }
+        if (password !== confirmPassword) {
+            setNotification("Passwords do not match")
+            return
+        }
         setUsername('')
         setPassword('')
         navigate("/registered")
@@ -38,6 +53,7 @@ const RightContainerRegister = () => {
                 <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Last Name</div><input type='text' value={lastname} onChange={handleChange} /></label>
                 <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Username</div><input type='text' value={username} onChange={handleChange} /></label>
                 <label style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}><div>Password</div><input type='password' value={password} onChange={handleChange} /></label>
+                <div style={{ height: '20px', fontSize: '0.8rem', color: 'red' }}>{notification}</div>
                 <div style={{ fontSize: '0.9rem', color: 'gray' }}>
                     <b>Strength:</b>
                     <ul style={{ margin: '0px', padding: '10px' }}>Password must include:
@@ -56,7 +72,7 @@ const RightContainerRegister = () => {
 
                 By registering, you agree to the Prepr Terms of use, Privacy policy and cookie policy
 
-                <button style={{ backgroundColor: "#ffa841", width: '100%' }}>
+                <button type="submit" style={{ backgroundColor: "#ffa841", width: '100%' }}>
                     Register
                 </button>
             </form>
