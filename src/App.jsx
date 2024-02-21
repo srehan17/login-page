@@ -1,12 +1,16 @@
 import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom'
 import './App.css'
-import Home from './components/Home.jsx'
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
 import BlankPage from './components/BlankPage.jsx'
+import BlankPageRegistered from './components/BlankPageRegistered.jsx'
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/registered" element={<BlankPageRegistered />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/logged-in" element={<BlankPage />} />
     </Routes>)
 }

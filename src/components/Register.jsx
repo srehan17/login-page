@@ -1,16 +1,16 @@
 import React from 'react'
 import Accessibility from './Accessibility.jsx'
-import Main from './Main.jsx'
+import MainRegister from './MainRegister.jsx'
 import Footer from './Footer.jsx'
 
-const Home = () => {
+const Register = () => {
     return (
         <>
             <Accessibility />
-            <Main />
+            <MainRegister />
             <Footer />
         </>
     )
 }
 
-export default Home
+export default Register
